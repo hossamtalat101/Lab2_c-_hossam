@@ -101,64 +101,19 @@ namespace Lab2_Najm
 
         private void txtNum1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-            //    e.Handled = true;
-            ////if (e.KeyChar == '-' && ((TextBox)sender).Text.Length == 0)//sender as TextBox
-            ////    e.Handled = true;
-            //if ((e.KeyChar == '.') && (((TextBox)sender).Text.IndexOf('.') > -1))
-            //    e.Handled = true;
-
-
-
-            if ((e.KeyChar >= 48 && e.KeyChar <= 57) || e.KeyChar == 8)
-                return;
-            if ((e.KeyChar == '-') && ((TextBox)sender).Text.Length == 0)//sender as TextBox
-                return;
-            e.Handled = true;
-            //if (txtNum1.Text.IndexOf('.') == -1)
-            //    return;
-            //e.Handled = true;
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.') && ((e.KeyChar!='-') || ((TextBox)sender).Text.Length != 0))
+                e.Handled = true;
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') >-1))
+                e.Handled = true;
+            
         }
 
         private void txtNum2_KeyPress(object sender, KeyPressEventArgs e)
         {
-
-            //if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-            //    e.Handled = true;
-            //if (e.KeyChar == '-' && ((TextBox)sender).Text.Length == 0)//sender as TextBox
-            //    e.Handled = true;
-            char[] dot = txtNum2.Text.ToCharArray();
-            int coun = 0;
-            foreach (char i in dot)
-                if (i == '.')
-                    coun++;
-            bool isnumber = (e.KeyChar >= 48 && e.KeyChar <= 57);
-            bool isbackspas = e.KeyChar == 8;
-            bool isminus= ((e.KeyChar == '-') && ((TextBox)sender).Text.Length == 0);
-            bool isdot = ((e.KeyChar == '.') && ((TextBox)sender).Text.Length != 0 && coun != 0);
-            
-         
-            if (!(isnumber || isbackspas || isminus||isdot)&&(txtNum2.Text.IndexOf('.') == -1))
-            {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.') && ((e.KeyChar != '-') || ((TextBox)sender).Text.Length != 0))
                 e.Handled = true;
-            }
-          
-
-
-
-            //if (!((e.KeyChar >= 48 && e.KeyChar <= 57) || e.KeyChar == 8 || ((e.KeyChar == '-') && ((TextBox)sender).Text.Length == 0)))
-            //{
-            //    e.Handled = true;
-            //}
-
-            // return;
-
-            //  if ((e.KeyChar == '-') && ((TextBox)sender).Text.Length == 0)//sender as TextBox
-            //   return;
-
-            //if ((e.KeyChar == '.') && (((TextBox)sender).Text.IndexOf('.') > -1))
-            //    e.Handled = true;
-
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+                e.Handled = true;
 
         }
     }
